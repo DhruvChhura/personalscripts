@@ -117,8 +117,8 @@ elif [ "$TOOLCHAIN" == clang ]; then
 	if [ ! -d "$HOME/proton_clang" ]
 	then
 		echo -e "$green << cloning Clang >> \n $white"
-		git clone --single-branch https://github.com/stormbreaker-project/stormbreaker-clang -b r399163b "$HOME"/proton_clang
-    cd "$HOME"/proton_clang && git reset --hard 7a4fbd8d5be72b3ffba44add2c41e15d4a6c80e7 && cd "$MY_DIR"
+		git clone --single-branch https://github.com/stormbreaker-project/stormbreaker-clang "$HOME"/proton_clang
+ 	        cd "$HOME"/proton_clang && git reset --hard 7a4fbd8d5be72b3ffba44add2c41e15d4a6c80e7 && cd "$MY_DIR"
 	fi
 	export PATH="$HOME/proton_clang/bin:$PATH"
 	export STRIP="$HOME/proton_clang/aarch64-linux-gnu/bin/strip"
