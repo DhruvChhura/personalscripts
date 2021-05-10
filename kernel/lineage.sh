@@ -61,8 +61,8 @@ KERNEL_NAME="lineage"
 
 DEFCONFIG="ysl-perf_defconfig"
 
-AnyKernel="https://github.com/stormbreaker-project/AnyKernel3"
-AnyKernelbranch="ysl"
+AnyKernel="https://github.com/ItsVixano/AnyKernel3"
+AnyKernelbranch="ysl-aosp"
 
 HOSST="circleci"
 USEER="ItsVixano"
