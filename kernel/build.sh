@@ -103,28 +103,13 @@ tg_error() {
 # And after that , the script start the compilation of the kernel it self
 # For regen the defconfig . use the regen.sh script
 
-if [ "$TOOLCHAIN" == gcc ]; then
-	if [ ! -d "$HOME/gcc64" ] && [ ! -d "$HOME/gcc32" ]
-	then
-		echo -e "$green << cloning gcc from arter >> \n $white"
-		git clone --depth=1 https://github.com/arter97/arm64-gcc "$HOME"/gcc64
-		git clone --depth=1 https://github.com/arter97/arm32-gcc "$HOME"/gcc32
-	fi
-	export PATH="$HOME/gcc64/bin:$HOME/gcc32/bin:$PATH"
-	export STRIP="$HOME/gcc64/aarch64-elf/bin/strip"
-	export KBUILD_COMPILER_STRING=$("$HOME"/gcc64/bin/aarch64-elf-gcc --version | head -n 1)
-elif [ "$TOOLCHAIN" == clang ]; then
-	if [ ! -d "$HOME/proton_clang" ]
-	then
-		echo -e "$green << cloning proton clang >> \n $white"
-		git clone --depth=1 https://github.com/kdrag0n/proton-clang.git "$HOME"/proton_clang
-	fi
-	export PATH="$HOME/proton_clang/bin:$PATH"
-	export STRIP="$HOME/proton_clang/aarch64-linux-gnu/bin/strip"
-	export KBUILD_COMPILER_STRING=$("$HOME"/proton_clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
-fi
-
 # Setup build process
+echo -e "$green << cloning gcc from mvaisakh >> \n $white"
+git clone --depth=1 https://github.com/mvaisakh/gcc-arm64 "$HOME"/gcc64
+git clone --depth=1 https://github.com/mvaisakh/gcc-arm "$HOME"/gcc32
+export PATH="$HOME/gcc64/bin:$HOME/gcc32/bin:$PATH"
+export STRIP="$HOME/gcc64/aarch64-elf/bin/strip"
+export KBUILD_COMPILER_STRING=$("$HOME"/gcc64/bin/aarch64-elf-gcc --version | head -n 1)
 
 build_kernel() {
 Start=$(date +"%s")
