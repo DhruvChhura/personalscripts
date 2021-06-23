@@ -55,19 +55,19 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 CHATID="$chat"
 API_BOT="$api"
 
-DEVICE=""
-CODENAME=""
-KERNEL_NAME=""
+DEVICE="Redmi S2/Y2"
+CODENAME="ysl"
+KERNEL_NAME="Perf"
 
-DEFCONFIG=""
+DEFCONFIG="ysl-perf_defconfig"
 
-AnyKernel=""
-AnyKernelbranch=""
+AnyKernel="https://github.com/DhruvChhura/AnyKernel3"
+AnyKernelbranch="master"
 
-HOSST=""
-USEER=""
+HOSST="circleci"
+USEER="DhruvChhura"
 
-TOOLCHAIN=""
+TOOLCHAIN="gcc"
 
 # setup telegram env
 export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
